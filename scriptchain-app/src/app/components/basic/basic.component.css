@@ -1,0 +1,24 @@
+.text-input {
+    padding: 10px;
+}
+.patient-info {
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 20px;
+}
+.patient-info-header, .appointment-range-header {
+    margin-top: 10px;
+}
+.appointment-range {
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 20px;
+}
+.search-btn {
+    float: right;
+    border-radius: 5px;
+    float: right;
+    width: 100px;
+    background-color: #4a8f84;
+    color: white;
+    border: none;
+    height: 30px;
+}

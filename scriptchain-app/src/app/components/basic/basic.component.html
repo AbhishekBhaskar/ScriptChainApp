@@ -1,0 +1,42 @@
+<div class="container">
+    <form [formGroup]="basicForm" (ngSubmit)="submitBasicForm()">
+        <div class="row patient-info">
+            <p class="patient-info-header">Patient Info</p>
+            <div class="col text-input">
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" formControlName="firstName" class="form-control">
+            </div>
+            
+            <div class="col text-input">
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="last-name" formControlName="lastName" class="form-control">
+            </div>
+
+            <div class="col text-input">
+                <label for="date-of-birth">Date of Birth</label>
+                <input type="date" id="date-of-birth" formControlName="dateOfBirth" class="form-control">
+            </div>
+            
+            <div class="col-4">
+                
+            </div>
+        </div>
+        <div class="row appointment-range">
+            <p class="appointment-range-header">Appointment Range</p>
+            <div class="col text-input">
+                <label for="start-date">Start Date</label>
+                <input type="date" id="start-date" formControlName="startDate" class="form-control">
+            </div>
+            <div class="col text-input">
+                <label for="end-date">End Date</label>
+                <input type="date" id="end-date" formControlName="endDate" class="form-control">
+            </div>
+            <div class="col-6">
+
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="search-btn">Search</button>
+        </div>
+    </form>
+</div>

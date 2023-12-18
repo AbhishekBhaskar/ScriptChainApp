@@ -1,0 +1,120 @@
+<div class="container-fluid search-container">
+  <div class="text-center">
+    <p class="welcome-msg">Hello, Dr. Noori!</p>
+  </div>
+  <div class="container">
+    <div>
+      <span class="bi bi-search"></span>
+      <span style="margin-left: 10px"><b>Search your patients</b></span>
+    </div>
+    <div class="form-area">
+      <ul class="nav nav-tabs">
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/basic-search" routerLinkActive="active">Basic</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/advanced-search">Advanced</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{'active': displayFormFlag}" routerLink="[]" (click)="displayBasicForm()">Basic</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="[]" [ngClass]="{'active': !displayFormFlag}" (click)="hideBasicForm()">Advanced</a>
+        </li>
+      </ul>
+      <app-basic [ngStyle]="{'display': displayFormFlag ? 'block' : 'none'}" [patientData]="patientData" (emitSearchData)="displayFilteredResults($event)"></app-basic>
+      <app-advanced [ngStyle]="{'display': displayFormFlag ? 'none' : 'block'}"></app-advanced>
+      <!-- <router-outlet></router-outlet> -->
+    </div>
+    <div class="search-results-section">
+      <ul class="nav nav-underline">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="[]" [ngClass]="{'active': displayTodaysPatients}" (click)="displayTodaysData()">
+            <span class="bi bi-calendar2-check"></span>
+            <span style="margin-left: 10px">Today's patients</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="[]" [ngClass]="{'active': !displayTodaysPatients}" (click)="hideTodaysData()">
+            <span class="bi bi-list"></span>
+            <span style="margin-left: 10px">Search Results</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="patient-info-section">
+      <div *ngFor="let patient of dataToDisplay" class="patient-details-card">
+        <div class="row patient-header">
+          <div class="col-8">
+            <span class="bi bi-person-circle"></span>
+            <span style="margin-left: 10px">{{patient.firstName}} {{patient.lastName}}</span>
+          </div>
+          <div class="col">
+            <span>Next Appointment</span>
+            <span *ngIf="displayTodaysPatients" class="next-appointment-text">Today</span>
+            <span *ngIf="!displayTodaysPatients" class="next-appointment-text">{{patient.appointmentDate}}</span>
+            <span class="bi bi-chevron-right" style="margin-left: 35px"></span>
+          </div>
+        </div>
+        <div class="row patient-row">
+          <div class="col">
+            <div class="row">
+              <div class="col data-labels">DOB</div>
+              <div class="col data-values">{{patient.dateOfBirth}}</div>
+            </div>
+            <div class="row">
+              <div class="col data-labels">Sex</div>
+              <div class="col data-values">{{patient.gender}}</div>
+            </div>
+            <div class="row">
+              <div class="col data-labels">Residence</div>
+              <div class="col data-values">{{patient.Residence}}</div>
+            </div>
+            <div class="row">
+              <div class="col data-labels">MRN</div>
+              <div class="col data-values">{{patient.MRN}}</div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="row">
+              <div class="col data-labels">ID Number</div>
+              <div class="col data-values">{{patient.idNumber}}</div>
+            </div>
+            <div class="row">
+              <div class="col data-labels">Last 4 digits of SSN</div>
+              <div class="col data-values">{{patient.last4SSN}}</div>
+            </div>
+            <div class="row">
+              <div class="col data-labels">Phone Number</div>
+              <div class="col data-values">{{patient.phoneNo}}</div>
+            </div>
+            <div class="row">
+              <div class="col data-labels">Email Address</div>
+              <div class="col data-values">{{patient.email}}</div>
+            </div>
+          </div>
+          
+          <div class="col">
+            <div class="row">
+              <div class="col data-labels">Hospital</div>
+              <div class="col data-values">{{patient.hospital}}</div>
+            </div>
+            <div class="row">
+              <div class="col data-labels">Dept.</div>
+              <div class="col data-values">{{patient.department}}</div>
+            </div>
+            <div class="row">
+              <div class="col data-labels">Physician</div>
+              <div class="col data-values">{{patient.physician}}</div>
+            </div>
+            <div class="row">
+              <div class="col data-labels">Conditions</div>
+              <div class="col data-values">{{patient.conditions}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
