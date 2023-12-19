@@ -16,10 +16,10 @@
           <a class="nav-link" routerLink="/advanced-search">Advanced</a>
         </li> -->
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active': displayFormFlag}" routerLink="[]" (click)="displayBasicForm()">Basic</a>
+          <a class="nav-link" [ngClass]="{'active': displayFormFlag, 'active-display': displayFormFlag, 'inactive-display': !displayFormFlag}" routerLink="[]" (click)="displayBasicForm()">Basic</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="[]" [ngClass]="{'active': !displayFormFlag}" (click)="hideBasicForm()">Advanced</a>
+          <a class="nav-link" routerLink="[]" [ngClass]="{'active': !displayFormFlag, 'active-display': !displayFormFlag, 'inactive-display': displayFormFlag}" (click)="hideBasicForm()">Advanced</a>
         </li>
       </ul>
       <app-basic [ngStyle]="{'display': displayFormFlag ? 'block' : 'none'}" [patientData]="patientData" (emitSearchData)="displayFilteredResults($event)"></app-basic>
@@ -29,13 +29,13 @@
     <div class="search-results-section">
       <ul class="nav nav-underline">
         <li class="nav-item">
-          <a class="nav-link" routerLink="[]" [ngClass]="{'active': displayTodaysPatients}" (click)="displayTodaysData()">
+          <a class="nav-link" routerLink="[]" [ngClass]="{'active': displayTodaysPatients, 'active-display-green': displayTodaysPatients, 'inactive-display': !displayTodaysPatients}" (click)="displayTodaysData()">
             <span class="bi bi-calendar2-check"></span>
             <span style="margin-left: 10px">Today's patients</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="[]" [ngClass]="{'active': !displayTodaysPatients}" (click)="hideTodaysData()">
+          <a class="nav-link" routerLink="[]" [ngClass]="{'active': !displayTodaysPatients, 'active-display-green': !displayTodaysPatients, 'inactive-display': displayTodaysPatients}" (click)="hideTodaysData()">
             <span class="bi bi-list"></span>
             <span style="margin-left: 10px">Search Results</span>
           </a>
